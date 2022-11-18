@@ -4,20 +4,14 @@ import axios from "axios"
 import { Body, BoxH2 } from "../../styles/bodyStyle"
 import { BoxMovies } from "./style"
 
+import { IMovie } from "../../interfaces/IMovies"
+
 import Header from "../header/Header"
 import { Movie } from "../movie/Movie"
 
 export default function MoviesPage() {
 
-  interface Movies {
-    id: Number;
-    overview: String;
-    posterURL: string;
-    releaseDate: String;
-    tittle: String
-  }
-
-  const [movies, setMovies] = useState<Movies[]>([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
 
   useEffect(() => {
     getMovies()
