@@ -12,7 +12,7 @@ export function MovieProvider({ children }: IProps) {
   const [movie, setMovie] = useState<IMovie>()
 
   return (
-    <MovieContext.Provider value={{movie, setMovie}}>
+    <MovieContext.Provider value={{ movie, setMovie }}>
       { children }
     </MovieContext.Provider>
   )

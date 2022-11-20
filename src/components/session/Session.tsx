@@ -1,10 +1,19 @@
-import { IDays, ISession } from "../../interfaces/ISession";
+import { IDays } from "../../interfaces/ISession";
+import { BoxSession, BoxHours } from "./style";
 
-export default function Session( props: any) {
-  const showTimes = props.showtimes
-  console.log(showTimes)
+import Hours from "../hours/Hours";
+
+export default function Session(props: IDays) {
   return (
-    <span>{props.weekday} - {props.date}</span>
-    
+    <BoxSession>
+      <span>{props.weekday} - {props.date}</span>
+      <BoxHours>
+        {
+          props.showtimes.map((item) => {
+            return (<Hours {...item} key={item.id} />)
+          })
+        }
+      </BoxHours>
+    </BoxSession>
   )
 }

@@ -3,13 +3,13 @@ export interface ISession {
   overview: String,
   posterURL: string,
   releaseDate: String,
-  tittle: String,
+  title: String,
   days: [
     {
       id: Number,
       weekday: string,
       date: string,
-      showTimes: [
+      showtimes: [
         {
           name: string,
           id: number
@@ -23,10 +23,15 @@ export interface IDays {
   id: Number,
   weekday: string,
   date: string,
-  showTimes: [
+  showtimes: [
     {
       name: string,
       id: number
     }
   ]
+}
+
+export interface IHour {
+  name: string,
+  id: number
 }

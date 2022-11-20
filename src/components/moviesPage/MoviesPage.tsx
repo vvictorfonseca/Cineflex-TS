@@ -30,9 +30,11 @@ export default function MoviesPage() {
   return (
     <Body>
       <Header />
+
       <BoxH2>
         <h2>Selecione o Filme</h2>
       </BoxH2>
+
       <BoxMovies>
         {
           movies.map((item, id) => {
@@ -42,6 +44,7 @@ export default function MoviesPage() {
           })
         }
       </BoxMovies>
+
     </Body>
   )
 }

@@ -20,7 +20,7 @@ export const Movie = (props: IMovie) => {
         overview: props.overview,
         posterURL: props.posterURL,
         releaseDate: props.releaseDate,
-        tittle: props.tittle
+        title: props.title
       })
     }}>
       <img src={props.posterURL} alt="Cartaz do filme"></img>

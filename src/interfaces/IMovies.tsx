@@ -3,5 +3,5 @@ export interface IMovie {
   overview: String;
   posterURL: string;
   releaseDate: String;
-  tittle: String
+  title: String
 }
