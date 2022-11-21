@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-import { Body, BoxH2 } from "../../styles/bodyStyle"
+import { Spin } from 'antd';
+
+import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle"
 import { BoxMovies } from "./style"
 
 import { IMovie } from "../../interfaces/IMovies"
 
 import Header from "../header/Header"
-import { Movie } from "../movie/Movie"
+import { Movie } from "./movie/Movie"
 
 export default function MoviesPage() {
-
   const [movies, setMovies] = useState<IMovie[]>([]);
+  const [isLoading, setIsLoading] = useState<Boolean>(true)
 
   useEffect(() => {
     getMovies()
@@ -24,6 +26,7 @@ export default function MoviesPage() {
     promise.then(response => {
       const { data } = response
       setMovies(data)
+      setIsLoading(false)
     })
   }
 
@@ -35,15 +38,25 @@ export default function MoviesPage() {
         <h2>Selecione o Filme</h2>
       </BoxH2>
 
-      <BoxMovies>
-        {
-          movies.map((item, id) => {
-            return (
-              <Movie {...item} key={id} />
-            )
-          })
-        }
-      </BoxMovies>
+      {
+        isLoading ? (
+
+          <BoxLoading>
+            <Spin />
+          </BoxLoading>
+
+        ) : (
+          <BoxMovies>
+            {
+              movies.map((item, id) => {
+                return (
+                  <Movie {...item} key={id} />
+                )
+              })
+            }
+          </BoxMovies>
+        )
+      }
 
     </Body>
   )

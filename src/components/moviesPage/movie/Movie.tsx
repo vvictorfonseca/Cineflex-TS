@@ -2,15 +2,16 @@ import { useNavigate } from "react-router-dom";
 
 import { BoxImg } from "./style"
 
-import { IMovie } from "../../interfaces/IMovies";
+import { IMovie } from "../../../interfaces/IMovies";
+import { IMovieContext } from "../../../contexts/movieContext";
 
-import MovieContext from "../../contexts/movieContext";
+import MovieContext from "../../../contexts/movieContext";
 import { useContext } from "react";
 
 export const Movie = (props: IMovie) => {
   const navigate = useNavigate()
 
-  const { setMovie } = useContext(MovieContext)
+  const { setMovie } = useContext<IMovieContext>(MovieContext)
 
   return (
     <BoxImg onClick={() => {

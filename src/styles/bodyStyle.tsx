@@ -17,3 +17,10 @@ export const BoxH2 = styled.div`
   font-weight: 400;
   color: #293845;
 `
+export const BoxLoading = styled.div`
+  width: 100%;
+  height: 250px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+`

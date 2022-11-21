@@ -1,7 +1,23 @@
 import { createContext, ReactNode, useState } from "react";
 import { IMovie } from "../interfaces/IMovies";
 
-const MovieContext = createContext<any>(null);
+export interface IMovieContext {
+  movie: IMovie;
+  setMovie: (newState: IMovie) => void;
+}
+
+const initialValue = {
+  movie: {
+    id: 0,
+    overview: "",
+    posterURL: "",
+    releaseDate: "",
+    title: "",
+  },
+  setMovie: () => {}
+}
+
+const MovieContext = createContext<IMovieContext>(initialValue);
 export default MovieContext
 
 interface IProps {
@@ -9,11 +25,11 @@ interface IProps {
 }
 
 export function MovieProvider({ children }: IProps) {
-  const [movie, setMovie] = useState<IMovie>()
+  const [movie, setMovie] = useState<IMovie>(initialValue.movie)
 
   return (
     <MovieContext.Provider value={{ movie, setMovie }}>
-      { children }
+      {children}
     </MovieContext.Provider>
   )
 }

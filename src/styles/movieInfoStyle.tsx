@@ -23,9 +23,21 @@ export const BoxImg = styled.div`
     width: 48px;
   }
 `
+export const BoxInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 70px;
+  margin-left: 14px;
+`
 export const H2 = styled.h2`
   font-size: 26px;
   font-weight: 400;
   color: #293845;
-  margin-left: 14px;
+`
+export const Span = styled.span`
+  font-size: 26px;
+  font-weight: 400;
+  color: #293845;
+  margin-top: 7px;
 `

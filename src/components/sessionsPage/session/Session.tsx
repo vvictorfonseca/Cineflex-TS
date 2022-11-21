@@ -1,4 +1,4 @@
-import { IDays } from "../../interfaces/ISession";
+import { IDays } from "../../../interfaces/ISession";
 import { BoxSession, BoxHours } from "./style";
 
 import Hours from "../hours/Hours";
@@ -6,7 +6,9 @@ import Hours from "../hours/Hours";
 export default function Session(props: IDays) {
   return (
     <BoxSession>
+
       <span>{props.weekday} - {props.date}</span>
+
       <BoxHours>
         {
           props.showtimes.map((item) => {
@@ -14,6 +16,7 @@ export default function Session(props: IDays) {
           })
         }
       </BoxHours>
+
     </BoxSession>
   )
 }

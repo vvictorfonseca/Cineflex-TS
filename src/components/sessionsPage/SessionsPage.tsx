@@ -1,28 +1,22 @@
 import { useContext, useEffect, useState } from "react"
 import axios from "axios";
 
-import { Body, BoxH2 } from "../../styles/bodyStyle"
-import { BoxMovieInfo, BoxImg, H2 } from "../../styles/movieInfoStyle";
+import { Spin } from 'antd';
 
-import { IMovie } from "../../interfaces/IMovies";
+import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle"
+import { BoxMovieInfo, BoxImg, H2, BoxInfo } from "../../styles/movieInfoStyle";
+
 import { ISession } from "../../interfaces/ISession";
 
-import MovieContext from "../../contexts/movieContext"
-
 import Header from "../header/Header"
-import Session from "../session/Session"
+import Session from "./session/Session"
 import { useParams } from "react-router-dom";
-
-interface IMovieContext {
-  movie: IMovie
-}
 
 export default function SessionsPage() {
   const movieId = useParams()
 
-  const { movie } = useContext<IMovieContext>(MovieContext)
-
   const [sessions, setSessions] = useState<ISession>()
+  const [isLoading, setIsLoading] = useState<Boolean>(true)
 
   useEffect(() => {
     getSessions()
@@ -35,6 +29,7 @@ export default function SessionsPage() {
     promise.then(response => {
       const { data } = response
       setSessions(data)
+      setIsLoading(false)
     })
     promise.catch(err => {
       console.log(err)
@@ -50,22 +45,36 @@ export default function SessionsPage() {
       </BoxH2>
 
       {
-        sessions?.days.map((item, id) => {
-          return (
-            <Session {...item} key={id} />
-          )
-        })
+        isLoading ? (
+          
+          <BoxLoading>
+            <Spin />
+          </BoxLoading>
+
+        ) : (
+          <>
+            {
+              sessions?.days.map((item, id) => {
+                return (
+                  <Session {...item} key={id} />
+                )
+              })
+            }
+
+            <BoxMovieInfo>
+
+              <BoxImg>
+                <img src={sessions?.posterURL} alt="Cartaz do filme"></img>
+              </BoxImg>
+
+              <BoxInfo>
+                <H2>{sessions?.title}</H2>
+              </BoxInfo>
+
+            </BoxMovieInfo>
+          </>
+        )
       }
-
-      <BoxMovieInfo>
-
-        <BoxImg>
-          <img src={movie.posterURL} alt="Cartaz do filme"></img>
-        </BoxImg>
-
-        <H2>{movie.title}</H2>
-
-      </BoxMovieInfo>
 
     </Body>
   )
