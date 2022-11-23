@@ -8,17 +8,21 @@ import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle";
 import { BoxMovieInfo, BoxImg, BoxInfo, H2, Span } from "../../styles/movieInfoStyle";
 import { BoxSeats } from "./style";
 
-import { ISeats } from "../../interfaces/ISeats";
+import { ISeats, ISeatInput } from "../../interfaces/ISeats";
 
 import Header from "../header/Header";
 import Seat from "./seat/Seat";
 import SeatsExample from "./seatsExample/SeatsExample";
+import Inputs from "./inputs/Inputs";
 
 export default function SeatsPage() {
   const [seats, setSeats] = useState<ISeats>()
-  const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
-  console.log(selectedSeats)
   
+  const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
+  
+  const [inputInfo, setInputInfo] = useState<ISeatInput>({name: "", cpf: ""})
+  console.log(inputInfo)
+
   const [isLoading, setIsLoading] = useState<Boolean>(true)
 
   const sessionId = useParams()
@@ -69,6 +73,8 @@ export default function SeatsPage() {
           </BoxSeats>
 
           <SeatsExample />
+
+          <Inputs inputInfo={inputInfo} setInputInfo={setInputInfo}  />
           
           <BoxMovieInfo>
 

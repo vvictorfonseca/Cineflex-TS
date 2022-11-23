@@ -25,7 +25,7 @@ export default function Seat(props: ISeat) {
   function selectElement() {
     if (props.isAvailable == false) {
 
-      return message.error("Não pode selecionar uma assento indisponível")
+      return message.error("Esse assento não está disponível")
 
     } else if (isSelected == true) {
       setIsSelected(false)

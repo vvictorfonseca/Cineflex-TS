@@ -27,3 +27,13 @@ export interface ISeat {
   selectedSeats: number[] | null[];
   setSelectedSeats: (newState: number[]) => void;
 }
+
+export interface ISeatInput {
+  name: string;
+  cpf: string;
+}
+
+export interface IseatInputProps{
+  inputInfo: ISeatInput;
+  setInputInfo: (newState: ISeatInput) => void
+}
