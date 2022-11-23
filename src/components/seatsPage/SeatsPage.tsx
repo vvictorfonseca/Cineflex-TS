@@ -6,13 +6,19 @@ import { Spin } from 'antd';
 
 import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle";
 import { BoxMovieInfo, BoxImg, BoxInfo, H2, Span } from "../../styles/movieInfoStyle";
+import { BoxSeats } from "./style";
 
 import { ISeats } from "../../interfaces/ISeats";
 
 import Header from "../header/Header";
+import Seat from "./seat/Seat";
+import SeatsExample from "./seatsExample/SeatsExample";
 
 export default function SeatsPage() {
   const [seats, setSeats] = useState<ISeats>()
+  const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
+  console.log(selectedSeats)
+  
   const [isLoading, setIsLoading] = useState<Boolean>(true)
 
   const sessionId = useParams()
@@ -46,11 +52,24 @@ export default function SeatsPage() {
 
       {
         isLoading ? (
+          
           <BoxLoading>
             <Spin />
           </BoxLoading>
 
         ) : (
+          <>
+
+          <BoxSeats>
+            {
+              seats?.seats.map((item, id) => {
+                return (<Seat {...item} key={id} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />)
+              })
+            }
+          </BoxSeats>
+
+          <SeatsExample />
+          
           <BoxMovieInfo>
 
             <BoxImg>
@@ -63,6 +82,7 @@ export default function SeatsPage() {
             </BoxInfo>
 
           </BoxMovieInfo>
+          </>
         )
       }
     </Body>

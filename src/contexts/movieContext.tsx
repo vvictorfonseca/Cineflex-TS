@@ -20,7 +20,7 @@ const initialValue = {
 const MovieContext = createContext<IMovieContext>(initialValue);
 export default MovieContext
 
-interface IProps {
+export interface IProps {
   children: ReactNode
 }
 

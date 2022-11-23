@@ -31,12 +31,12 @@ export const BoxInfo = styled.div`
   margin-left: 14px;
 `
 export const H2 = styled.h2`
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   color: #293845;
 `
 export const Span = styled.span`
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 400;
   color: #293845;
   margin-top: 7px;

@@ -19,3 +19,11 @@ export interface ISeats {
     },
   ]
 }
+
+export interface ISeat {
+  id: Number,
+  name: String,
+  isAvailable: Boolean,
+  selectedSeats: number[] | null[];
+  setSelectedSeats: (newState: number[]) => void;
+}
