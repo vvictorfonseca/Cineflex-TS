@@ -3,13 +3,12 @@ import { BoxMovieInfo, BoxImg, BoxInfo, H2, Span } from "../../styles/movieInfoS
 import { IDay } from "../../interfaces/ISeats";
 import { IMovie } from "../../interfaces/IMovies";
 
-interface IFotterProps {
+export interface IFotterProps {
   day: IDay;
   movie: IMovie;
 }
 
 export default function Footer(props: IFotterProps) {
-
   return (
     <BoxMovieInfo>
 
@@ -19,7 +18,9 @@ export default function Footer(props: IFotterProps) {
 
       <BoxInfo>
         <H2>{props.movie.title}</H2>
-        <Span>{props.day.weekday} - {props.day.date}</Span>
+        <Span>
+          {props.day.weekday !== "" ? `${props.day.weekday} - ${props.day.date}` : <></>}
+        </Span>
       </BoxInfo>
 
     </BoxMovieInfo>

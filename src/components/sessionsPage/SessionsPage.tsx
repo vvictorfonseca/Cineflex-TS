@@ -1,22 +1,34 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import { Spin } from 'antd';
 
 import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle"
-import { BoxMovieInfo, BoxImg, H2, BoxInfo } from "../../styles/movieInfoStyle";
 
 import { ISession } from "../../interfaces/ISession";
 
 import Header from "../header/Header"
 import Session from "./session/Session"
-import { useParams } from "react-router-dom";
+import Footer from "../footer/Footer";
+import { IMovie } from "../../interfaces/IMovies";
+
+import { initalValueSessionPage } from "../../initalValues/initialValues";
+import { initalValueSeatsPage } from "../../initalValues/initialValues";
 
 export default function SessionsPage() {
   const movieId = useParams()
 
-  const [sessions, setSessions] = useState<ISession>()
+  const [sessions, setSessions] = useState<ISession>(initalValueSessionPage)
   const [isLoading, setIsLoading] = useState<Boolean>(true)
+
+  const movieInfos: IMovie = {
+    id: sessions.id,
+    overview: sessions.overview,
+    posterURL: sessions.posterURL,
+    releaseDate: sessions.releaseDate,
+    title: sessions.title
+  }
 
   useEffect(() => {
     getSessions()
@@ -61,17 +73,7 @@ export default function SessionsPage() {
               })
             }
 
-            <BoxMovieInfo>
-
-              <BoxImg>
-                <img src={sessions?.posterURL} alt="Cartaz do filme"></img>
-              </BoxImg>
-
-              <BoxInfo>
-                <H2>{sessions?.title}</H2>
-              </BoxInfo>
-
-            </BoxMovieInfo>
+            <Footer day={initalValueSeatsPage.day} movie={movieInfos} />
           </>
         )
       }

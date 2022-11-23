@@ -5,7 +5,6 @@ import axios from "axios";
 import { Spin } from 'antd';
 
 import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle";
-import { BoxMovieInfo, BoxImg, BoxInfo, H2, Span } from "../../styles/movieInfoStyle";
 import { BoxSeats, Button } from "./style";
 
 import { ISeats, ISeatInput, IDay } from "../../interfaces/ISeats";
@@ -17,25 +16,12 @@ import SeatsExample from "./seatsExample/SeatsExample";
 import Inputs from "./inputs/Inputs";
 import Footer from "../footer/Footer";
 
-const initalValue = {
-  day: {
-    weekday: "",
-    date: ""
-  },
-  
-  movie: {
-    id: 0,
-    overview: "",
-    posterURL: "",
-    releaseDate: "",
-    title: ""
-  }
-}
+import { initalValueSeatsPage } from "../../initalValues/initialValues";
 
 export default function SeatsPage() {
   const [seats, setSeats] = useState<ISeats[]>()
-  const [day, setDay] = useState<IDay>(initalValue.day)
-  const [movie, setMovie] = useState<IMovie>(initalValue.movie)
+  const [day, setDay] = useState<IDay>(initalValueSeatsPage.day)
+  const [movie, setMovie] = useState<IMovie>(initalValueSeatsPage.movie)
   
   const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
   
