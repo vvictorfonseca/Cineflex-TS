@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ISeat } from "../../../interfaces/ISeats";
+import { ISeatProps } from "../../../interfaces/ISeats";
 
 import { message } from 'antd';
 
@@ -17,7 +17,7 @@ export const seatBorderColor = {
   unavailable: "1px solid #F7C52B"
 }
 
-export default function Seat(props: ISeat) {
+export default function Seat(props: ISeatProps) {
   const [isSelected, setIsSelected] = useState<Boolean>(false)
 
   let index = props.selectedSeats.indexOf(props.id as never)
@@ -42,7 +42,8 @@ export default function Seat(props: ISeat) {
     <BoxSeat
       onClick={() => selectElement()}
       backgroundColor={isSelected ? seatBackgroundColor.selected : props.isAvailable ? seatBackgroundColor.available : seatBackgroundColor.unavailable}
-      borderColor={isSelected ? seatBorderColor.selected : props.isAvailable ? seatBorderColor.available : seatBorderColor.unavailable}>
+      borderColor={isSelected ? seatBorderColor.selected : props.isAvailable ? seatBorderColor.available : seatBorderColor.unavailable}
+      >
       {props.name}
     </BoxSeat>
   )

@@ -3,21 +3,7 @@ import { IMovie } from "./IMovies"
 export interface ISeats {
   id: Number,
   name: String,
-  day: {
-    id: Number,
-    weekday: String,
-    date: String,
-  },
-  
-  movie: IMovie,
-  
-  seats: [
-    {
-      id: Number,
-      name: String,
-      isAvailable: Boolean,
-    },
-  ]
+  isAvailable: Boolean,
 }
 
 export interface ISeat {
@@ -28,12 +14,17 @@ export interface ISeat {
   setSelectedSeats: (newState: number[]) => void;
 }
 
+export interface IDay {
+  weekday: String;
+  date: String;
+}
+
 export interface ISeatInput {
   name: string;
   cpf: string;
 }
 
-export interface IseatInputProps{
+export interface IseatInputProps {
   inputInfo: ISeatInput;
   setInputInfo: (newState: ISeatInput) => void
 }

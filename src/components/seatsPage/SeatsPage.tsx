@@ -6,22 +6,40 @@ import { Spin } from 'antd';
 
 import { Body, BoxH2, BoxLoading } from "../../styles/bodyStyle";
 import { BoxMovieInfo, BoxImg, BoxInfo, H2, Span } from "../../styles/movieInfoStyle";
-import { BoxSeats } from "./style";
+import { BoxSeats, Button } from "./style";
 
-import { ISeats, ISeatInput } from "../../interfaces/ISeats";
+import { ISeats, ISeatInput, IDay } from "../../interfaces/ISeats";
+import { IMovie } from "../../interfaces/IMovies";
 
 import Header from "../header/Header";
 import Seat from "./seat/Seat";
 import SeatsExample from "./seatsExample/SeatsExample";
 import Inputs from "./inputs/Inputs";
+import Footer from "../footer/Footer";
+
+const initalValue = {
+  day: {
+    weekday: "",
+    date: ""
+  },
+  
+  movie: {
+    id: 0,
+    overview: "",
+    posterURL: "",
+    releaseDate: "",
+    title: ""
+  }
+}
 
 export default function SeatsPage() {
-  const [seats, setSeats] = useState<ISeats>()
+  const [seats, setSeats] = useState<ISeats[]>()
+  const [day, setDay] = useState<IDay>(initalValue.day)
+  const [movie, setMovie] = useState<IMovie>(initalValue.movie)
   
   const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
   
   const [inputInfo, setInputInfo] = useState<ISeatInput>({name: "", cpf: ""})
-  console.log(inputInfo)
 
   const [isLoading, setIsLoading] = useState<Boolean>(true)
 
@@ -38,7 +56,9 @@ export default function SeatsPage() {
     const promise = axios.get(URL)
     promise.then(response => {
       const { data } = response
-      setSeats(data)
+      setSeats(data.seats)
+      setDay(data.day)
+      setMovie(data.movie)
       setIsLoading(false)
     })
     promise.catch(err => {
@@ -66,7 +86,7 @@ export default function SeatsPage() {
 
           <BoxSeats>
             {
-              seats?.seats.map((item, id) => {
+              seats?.map((item, id) => {
                 return (<Seat {...item} key={id} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />)
               })
             }
@@ -75,19 +95,11 @@ export default function SeatsPage() {
           <SeatsExample />
 
           <Inputs inputInfo={inputInfo} setInputInfo={setInputInfo}  />
+
+          <Button>Reservar assento(s)</Button>
           
-          <BoxMovieInfo>
-
-            <BoxImg>
-              <img src={seats?.movie.posterURL} alt="Cartaz do filme"></img>
-            </BoxImg>
-
-            <BoxInfo>
-              <H2>{seats?.movie.title}</H2>
-              <Span>{seats?.day.weekday} - {seats?.day.date}</Span>
-            </BoxInfo>
-
-          </BoxMovieInfo>
+          <Footer day={day} movie={movie} />
+          
           </>
         )
       }
