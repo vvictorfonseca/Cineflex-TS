@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export interface ISeatColar {
+export interface ISeatColor {
   backgroundColor: string;
   borderColor: string;
 }
 
-export const BoxSeat = styled.div.attrs<ISeatColar>(props => ({
+export const BoxSeat = styled.div.attrs<ISeatColor>(props => ({
   style: {
     backgroundColor: props.backgroundColor,
     border: props.borderColor
   }
-})) <ISeatColar>`
+})) <ISeatColor>`
   width: 26px;
   height: 26px;
   display: flex;
