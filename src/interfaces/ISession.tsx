@@ -19,7 +19,7 @@ export interface ISession {
   ]
 }
 
-export interface IDays {
+export interface IDaysProps {
   id: Number,
   weekday: string,
   date: string,
@@ -31,7 +31,7 @@ export interface IDays {
   ]
 }
 
-export interface IHour {
-  name: string,
-  id: number
+export interface IHourProps {
+  name: string;
+  id: number;
 }

@@ -1,17 +1,7 @@
-import { IMovie } from "./IMovies"
-
 export interface ISeats {
   id: Number,
   name: String,
   isAvailable: Boolean,
-}
-
-export interface ISeat {
-  id: Number,
-  name: String,
-  isAvailable: Boolean,
-  selectedSeats: number[] | null[];
-  setSelectedSeats: (newState: number[]) => void;
 }
 
 export interface IDay {
@@ -22,6 +12,20 @@ export interface IDay {
 export interface ISeatInput {
   name: string;
   cpf: string;
+}
+
+export interface ISeatsReservation {
+  ids: number[] | null[];
+  name: string;
+  cpf: string
+}
+
+export interface ISeatProps {
+  id: Number,
+  name: String,
+  isAvailable: Boolean,
+  selectedSeats: number[] | null[];
+  setSelectedSeats: (newState: number[]) => void;
 }
 
 export interface IseatInputProps {

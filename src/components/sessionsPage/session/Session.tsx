@@ -1,9 +1,9 @@
-import { IDays } from "../../../interfaces/ISession";
+import { IDaysProps } from "../../../interfaces/ISession";
 import { BoxSession, BoxHours } from "./style";
 
 import Hours from "../hours/Hours";
 
-export default function Session(props: IDays) {
+export default function Session(props: IDaysProps) {
   return (
     <BoxSession>
 

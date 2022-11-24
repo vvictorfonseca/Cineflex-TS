@@ -16,6 +16,13 @@ export const BoxH2 = styled.div`
   font-size: 24px;
   font-weight: 400;
   color: #293845;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #247A6B;
+  }
 `
 export const BoxLoading = styled.div`
   width: 100%;

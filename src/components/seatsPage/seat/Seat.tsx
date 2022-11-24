@@ -21,6 +21,7 @@ export default function Seat(props: ISeatProps) {
   const [isSelected, setIsSelected] = useState<Boolean>(false)
 
   let index = props.selectedSeats.indexOf(props.id as never)
+  let indexNumbers = props.selectedSeatNumbers.indexOf(props.id as never)
 
   function selectElement() {
     if (props.isAvailable == false) {
@@ -30,11 +31,13 @@ export default function Seat(props: ISeatProps) {
     } else if (isSelected == true) {
       setIsSelected(false)
       props.selectedSeats.splice(index, 1)
+      props.selectedSeatNumbers.splice(indexNumbers, 1)
       
 
     } else if (isSelected == false) {
       setIsSelected(true)
       props.setSelectedSeats([...props.selectedSeats as any[], props.id])
+      props.setSelectedSeatNumbers([...props.selectedSeatNumbers as any[], props.name])
     }
   }
 

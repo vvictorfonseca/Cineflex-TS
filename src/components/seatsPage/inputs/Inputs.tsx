@@ -3,6 +3,7 @@ import { BoxInputs, BoxInput, H1, Input } from "./style"
 import { IseatInputProps } from "../../../interfaces/ISeats"
 
 export default function Inputs(props: IseatInputProps) {
+
   return (
     <BoxInputs>
       <BoxInput>

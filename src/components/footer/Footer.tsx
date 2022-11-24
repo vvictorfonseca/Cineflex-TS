@@ -18,9 +18,7 @@ export default function Footer(props: IFotterProps) {
 
       <BoxInfo>
         <H2>{props.movie.title}</H2>
-        <Span>
-          {props.day.weekday !== "" ? `${props.day.weekday} - ${props.day.date}` : <></>}
-        </Span>
+        {props.day.weekday !== "" ? <Span>{props.day.weekday} - {props.day.date}</Span> : <></>}
       </BoxInfo>
 
     </BoxMovieInfo>

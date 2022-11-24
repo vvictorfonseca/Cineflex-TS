@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
 
-import { IHour } from "../../../interfaces/ISession"
+import { IHourProps } from "../../../interfaces/ISession"
 import { BoxHour } from "./style"
 
-export default function Hours(props: IHour) {
+export default function Hours(props: IHourProps) {
   const navigate = useNavigate()
 
   return (
