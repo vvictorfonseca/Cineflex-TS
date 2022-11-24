@@ -25,6 +25,7 @@ export default function SeatsPage() {
   const [seats, setSeats] = useState<ISeats[]>()
   const [day, setDay] = useState<IDay>(initalValueSeatsPage.day)
   const [movie, setMovie] = useState<IMovie>(initalValueSeatsPage.movie)
+  const [hour, setHour] = useState<string>("")
   
   const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
   const [selectedSeatNumbers, setSelectedSeatNumbers] = useState<string[] | null[]>([])
@@ -37,8 +38,6 @@ export default function SeatsPage() {
   
   const sessionId = useParams()
   const navigate = useNavigate()
-
-  let hour = ""
 
   const objReservation: ISeatsReservation = {
     ids: selectedSeats,
@@ -65,7 +64,7 @@ export default function SeatsPage() {
     const promise = axios.get(URL)
     promise.then(response => {
       const { data } = response
-      hour = data.name
+      setHour(data.name)
       setSeats(data.seats)
       setDay(data.day)
       setMovie(data.movie)

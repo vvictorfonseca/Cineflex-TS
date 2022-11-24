@@ -20,4 +20,9 @@ export const Button = styled.button`
   border-radius: 3px;
   border: none;
   cursor: pointer;
+
+  :last-child {
+    margin-bottom: 100px;
+    margin-top: 25px;
+  }
 `

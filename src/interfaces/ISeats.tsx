@@ -24,6 +24,8 @@ export interface ISeatProps {
   id: Number,
   name: String,
   isAvailable: Boolean,
+  selectedSeatNumbers: string[] | null[];
+  setSelectedSeatNumbers: (newState: string[]) => void;
   selectedSeats: number[] | null[];
   setSelectedSeats: (newState: number[]) => void;
 }

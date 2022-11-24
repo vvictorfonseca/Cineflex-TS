@@ -1,7 +1,9 @@
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 
 import { Body, BoxH2 } from "../../styles/bodyStyle"
 import { BoxInfo, H1, H2, Span } from "./style"
+import { Button } from "../seatsPage/style"
 
 import Header from "../header/Header"
 
@@ -12,6 +14,8 @@ import SucessContext, { ISucessContext } from "../../contexts/sucessContext"
 export default function SucessPage() {
   const { sucessPageInfo } = useContext<ISucessContext>(SucessContext)
   console.log(sucessPageInfo)
+  
+  const navigate = useNavigate()
 
   return (
     <Body>
@@ -41,6 +45,8 @@ export default function SucessPage() {
         <H2>{sucessPageInfo?.objReservation.name}</H2>
         <H2>{sucessPageInfo?.objReservation.cpf}</H2>
       </BoxInfo>
+
+      <Button onClick={() => navigate("/")}>Voltar pra Home</Button>
     </Body>
   )
 }

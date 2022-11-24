@@ -1,14 +1,11 @@
 import styled from "styled-components";
 
 export const BoxInfo = styled.div`
-  width: 90%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-
-  :last-child {
-    margin-bottom: 70px;
-  }
+  margin-bottom: 30px;
 `
 export const H1 = styled.h1`
   font-size: 24px;
