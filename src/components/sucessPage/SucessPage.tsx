@@ -21,12 +21,11 @@ export default function SucessPage() {
 
   const navigate = useNavigate()
 
-  let cpf = sucessPageInfo.objReservation.cpf
-  let format = ""
+  const cpf = sucessPageInfo.objReservation.cpf
 
   useEffect(() => {
     setIsLoading(true)
-    format = ""
+    let format = ""
     
     for (let i = 0; i < cpf.length; i++) {
       if (i < 3) {
@@ -41,7 +40,7 @@ export default function SucessPage() {
         format = format + cpf[i]
       } else if (i == 9) {
         format = format + "-" + cpf[i]
-      } else if (i == 10) {
+      } else {
         format = format + cpf[i]
       }
     }
