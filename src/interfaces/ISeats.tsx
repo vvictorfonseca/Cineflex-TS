@@ -15,7 +15,7 @@ export interface ISeatInput {
 }
 
 export interface ISeatsReservation {
-  ids: number[] | null[];
+  ids: number[];
   name: string;
   cpf: string
 }

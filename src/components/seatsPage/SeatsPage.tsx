@@ -27,8 +27,8 @@ export default function SeatsPage() {
   const [movie, setMovie] = useState<IMovie>(initalValueSeatsPage.movie)
   const [hour, setHour] = useState<string>("")
   
-  const [selectedSeats, setSelectedSeats] = useState<number[] | null[]>([])
-  const [selectedSeatNumbers, setSelectedSeatNumbers] = useState<string[] | null[]>([])
+  const [selectedSeats, setSelectedSeats] = useState<number[]>([])
+  const [selectedSeatNumbers, setSelectedSeatNumbers] = useState<string[]>([])
   
   const [inputInfo, setInputInfo] = useState<ISeatInput>({name: "", cpf: ""})
 
@@ -85,9 +85,9 @@ export default function SeatsPage() {
     } else if(objReservation.name.length < 3) {
       setIsLoading(false)
       return message.error("Insira um noma válido (Pelo menos 3 caractéres)")
-    } else if(objReservation.cpf.length < 11) {
+    } else if(objReservation.cpf.length !== 11) {
       setIsLoading(false)
-      return message.error("Informa um CPF válido")
+      return message.error("Informa um CPF válido (Apenas números)")
     }
 
     const promise = axios.post(URL, objReservation)

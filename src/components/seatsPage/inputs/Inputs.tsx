@@ -13,7 +13,7 @@ export default function Inputs(props: IseatInputProps) {
 
       <BoxInput>
         <H1>CPF do comprador:</H1>
-        <Input type={"text"} placeholder={"Digite seu CPF..."} value={props.inputInfo.cpf} onChange={(e) => props.setInputInfo({...props.inputInfo, cpf: e.target.value})} />
+        <Input type={"text"} placeholder={"Digite seu CPF... (Apenas números)"} value={props.inputInfo.cpf} onChange={(e) => props.setInputInfo({...props.inputInfo, cpf: e.target.value})} />
       </BoxInput>
     </BoxInputs>
   )

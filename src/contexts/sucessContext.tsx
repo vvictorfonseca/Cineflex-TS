@@ -1,13 +1,15 @@
 import { createContext, ReactNode, useState } from "react";
 import { ISucess } from "../interfaces/ISucess";
 
+import { initalValueSucessInfo } from "../initalValues/initialValues";
+
 export interface ISucessContext {
-  sucessPageInfo: ISucess | null;
+  sucessPageInfo: ISucess;
   setSucessPageInfo: (newState: ISucess) => void;
 }
 
 const initialValue: ISucessContext = {
-  sucessPageInfo: null,
+  sucessPageInfo: initalValueSucessInfo,
   setSucessPageInfo: () => {}
 }
 
@@ -19,7 +21,7 @@ export interface IProps {
 }
 
 export function SucessProvider({ children }: IProps) {
-  const [sucessPageInfo, setSucessPageInfo] = useState<ISucess | null>(initialValue.sucessPageInfo)
+  const [sucessPageInfo, setSucessPageInfo] = useState<ISucess>(initialValue.sucessPageInfo)
 
   return (
     <SucessContext.Provider value={{ sucessPageInfo, setSucessPageInfo }}>

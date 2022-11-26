@@ -7,3 +7,16 @@ export interface ISucess {
   hour: String;
   date: String;
 }
+
+export const initalValueSucessInfo: ISucess = {
+  objReservation: {
+    ids: [0],
+    name: "",
+    cpf: ""
+  },
+  selectedSeatNumbers: [""],
+  title: "",
+  hour: "",
+  date: "",
+}
+
