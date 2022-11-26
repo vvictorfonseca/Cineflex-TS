@@ -22,3 +22,8 @@ Cineflex é uma aplicação front-end para reservas de um cinema.
 - Selecionando um horário em uma determinada data, terá a opção de selecionar assentos (apenas os disponíveis), informar seus dados e fazer a reserva desses assentos. (No footer terá a foto do filme, seu nome e a data selecionada)
 - Se tudo der certo, será exibido uma tela de sucesso informado a data e horário do filme, os assentos reservados e as informações do cliente.
 ***
+## Link da aplicação deployada
+
+- cineflex-ts.vercel.app
+
+***
